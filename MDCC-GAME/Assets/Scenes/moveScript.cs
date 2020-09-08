@@ -4,10 +4,11 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
-public class moveScript : MonoBehaviour
+public class MoveScript : MonoBehaviour
 {
 
     public float speed = 10.4f;
+    public float jumpSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +42,15 @@ public class moveScript : MonoBehaviour
             //transform.localRotation = Quaternion.Euler(0, 180, 0);
             pos.x += speed * Time.deltaTime;
         }
+        /*
+        if (Input.GetKeyDown("space"))
+        {
+            {
+                pos.y += jumpSpeed * Time.deltaTime;
+            }
+        }
+        */
 
-        
         transform.position = pos;
 
 
