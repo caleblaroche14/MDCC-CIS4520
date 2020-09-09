@@ -21,7 +21,7 @@ public class SpriteFlipper : MonoBehaviour
             if (mySpriteRenderer != null)
             {
                 // flip the sprite
-                mySpriteRenderer.flipX = false;
+                mySpriteRenderer.flipX = true;
             }
         }
         // if the A key was pressed this frame
@@ -31,7 +31,7 @@ public class SpriteFlipper : MonoBehaviour
             if (mySpriteRenderer != null)
             {
                 // flip the sprite
-                mySpriteRenderer.flipX = true;
+                mySpriteRenderer.flipX = false;
             }
         }
     }
