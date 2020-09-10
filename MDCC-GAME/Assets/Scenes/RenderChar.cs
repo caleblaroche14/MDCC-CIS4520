@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class RenderChar : MonoBehaviour
 {
-    public Sprite sprite1; // Drag your first sprite here
-    public Sprite sprite2; // Drag your second sprite here
+
+    public Sprite sprite1; // default
+
+    int walkCount = 0;
+    public Sprite walk1; // Drag your first sprite here
+    public Sprite walk2; // Drag your second sprite here
+    public Sprite walk3; // Drag your second sprite here
+
+
+    public Sprite jump1;
+
+    public bool walking = true;
+    public bool jumping = false;
 
     private SpriteRenderer spriteRenderer;
 
@@ -13,22 +24,52 @@ public class RenderChar : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); // we are accessing the SpriteRenderer that is attached to the Gameobject
         //if (spriteRenderer.sprite == null) // if the sprite on spriteRenderer is null then
-            spriteRenderer.sprite = sprite1; // set the sprite to sprite1
+            spriteRenderer.sprite = sprite1; 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // If the space bar is pushed down
-        {
-            ChangeTheDamnSprite(); // call method to change sprite
-        }
+
+        RenderCharacter(); // call method to change sprite
+
     }
 
-    void ChangeTheDamnSprite()
+    void RenderCharacter()
     {
 
-        
-        spriteRenderer.sprite = sprite1;
+        if (Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("w") || Input.GetKey("d")) { 
+            walking = true;
+        }
+        else{
+            walking = false;
+        }
+
+        if (walking == true)
+        {
+            walkCount++;
+            if (walkCount == 1)
+            {
+                spriteRenderer.sprite = walk1;
+            }
+            else if (walkCount == 50)
+            {
+                spriteRenderer.sprite = walk2;
+            }
+            else if (walkCount == 100)
+            {
+                spriteRenderer.sprite = walk3;
+                
+            }else if(walkCount == 150)
+            {
+                walkCount = 0;
+            }
+
+        }
+
+        if (jumping == true)
+        {
+            spriteRenderer.sprite = jump1;
+        }
 
     }
 }

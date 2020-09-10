@@ -839,7 +839,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite1: {fileID: 0}
-  sprite2: {fileID: 0}
+  walk1: {fileID: 0}
+  walk2: {fileID: 0}
+  walk3: {fileID: 0}
+  jump1: {fileID: 0}
+  walking: 1
+  jumping: 0
 --- !u!1 &1148222219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1963,22 @@ PrefabInstance:
       propertyPath: sprite1
       value: 
       objectReference: {fileID: 21300000, guid: bc5fa9d3a4d1da749bd4e55629c1d4d6, type: 3}
+    - target: {fileID: 6654620894764037789, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654620894764037789, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: walk1
+      value: 
+      objectReference: {fileID: 21300000, guid: 24f19da00d3d7984b8e602592603db83, type: 3}
+    - target: {fileID: 6654620894764037789, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: walk2
+      value: 
+      objectReference: {fileID: 21300000, guid: cd90ae826fe98014d8cd3a6c96a46b63, type: 3}
+    - target: {fileID: 6654620894764037789, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: walk3
+      value: 
+      objectReference: {fileID: 21300000, guid: e0f1939c660a9e44a912d3a9d304dbad, type: 3}
     m_RemovedComponents:
     - {fileID: 2694507105641387606, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
