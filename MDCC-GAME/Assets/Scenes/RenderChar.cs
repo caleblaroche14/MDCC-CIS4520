@@ -27,7 +27,7 @@ public class RenderChar : MonoBehaviour
     void ChangeTheDamnSprite()
     {
 
-  
+        
         spriteRenderer.sprite = sprite1;
 
     }
