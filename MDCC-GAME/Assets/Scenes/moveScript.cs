@@ -12,11 +12,6 @@ public class MoveScript : MonoBehaviour
     public float speedy = 0.0f;
     public float accel = 1f;
 
-    public bool movingL = false;
-    public bool movingR = false;
-    public bool movingU = false;
-    public bool movingD = false;
-
     public int count = 0;
    // public float accelSpeed = 1.01f;
     public float jumpSpeed = 5f;
@@ -35,102 +30,28 @@ public class MoveScript : MonoBehaviour
     {
          
         Vector3 pos = transform.position;
-
-        if (Input.GetKey("a")){
-            movingL = true;
-            movingR = false;
-        }
-        else
-        {
-            movingL = false;
-        }
-        if (Input.GetKey("d"))
-        {
-            movingL = false;
-            movingR = true;
-        }
-        else
-        {
-            movingR = false;
-        }
-        if (Input.GetKey("w"))
-        {
-            movingU = true;
-            movingD = false;
-        }
-        else
-        {
-            movingU = false;
-        }
-        if (Input.GetKey("s"))
-        {
-            movingU = false;
-            movingD = true;
-        }
-        else
-        {
-            movingD = false;
-        }
-
-        /*
-        if (movingL == true)
-        {
-            if (Math.Abs(speedx) < speedCap)
-            {
-                count++;
-                speedx = speedx - accel;
-            }
-        else
-        {
-
-        }
-
-        if (movingR == true)
-        {
-            if (Math.Abs(speedx) < speedCap)
-            {
-                speedx = speedx + accel;
-            }
-        }
-        else
-        {
-
-        }
-
-        if (movingU == true)
-        {
-
-        }
-        else
-        {
-
-        }
-
-        if (movingD == true)
-        {
-
-        }
-        else
-        {
-
-        }
-        */
         
         if (Input.GetKey("a") || Input.GetKey("d"))
         {
-            if (Math.Abs(speedx) < speedCap)
-            {
+            //if (Math.Abs(speedx) < speedCap)
+            //{
                 count++;
                 if (Input.GetKey("a"))
                 {
-                    speedx = speedx - accel;
+                    if (speedx > (speedCap * -1))
+                    {
+                        speedx = speedx - accel;
+                    }
                 }
                 if (Input.GetKey("d"))
                 {
-                    speedx = speedx + accel;
+                if (speedx < speedCap)
+                    {
+                        speedx = speedx + accel;
+                    }
                 }
                 Debug.Log(count + ": Speed: x" + speedx);
-            }
+            //}
         }
         else
         {
@@ -153,19 +74,25 @@ public class MoveScript : MonoBehaviour
 
         if (Input.GetKey("w") || Input.GetKey("s"))
         {
-            if (Math.Abs(speedy) < speedCap)
-            {
+            //if (Math.Abs(speedy) < speedCap)
+            //{
                 count++;
                 if (Input.GetKey("s"))
                 {
-                    speedy = speedy - accel;
+                    if (speedy > (speedCap * -1))
+                    {
+                        speedy = speedy - accel;
+                    }
                 }
                 if (Input.GetKey("w"))
                 {
-                    speedy = speedy + accel;
+                    if (speedy < speedCap)
+                    {
+                        speedy = speedy + accel;
+                    }
                 }
                 Debug.Log(count + ": Speed y: " + speedy);
-            }
+            //}
         }
         else
         {
