@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -9,6 +10,7 @@ public class Movement : MonoBehaviour
     public float speedx = 0.0f;
     public float speedy = 0.0f;
     public float accel = 1f;
+
 
     Vector3 playerPos;
 
@@ -36,14 +38,30 @@ public class Movement : MonoBehaviour
 
 
         // MOB IS NOT MOVING!! 
+ 
+        
+        if (pos.x < playerPos.x)
+        {
+             speedx = 2;
+        }
+        if (pos.x > playerPos.x)
+        {
+            speedx = -2;
+        }
 
-        //if (pos.x < playerPos.x)
-        //{
-
-            speedx = 5;
-        //}
+        if (pos.y < playerPos.y)
+        {
+            speedy = 2;
+        }
+        if (pos.y > playerPos.y)
+        {
+            speedy = -2;
+        }
+        
 
         pos.y += speedy * Time.deltaTime;
         pos.x += speedx * Time.deltaTime;
+
+        transform.position = pos;
     }
 }
