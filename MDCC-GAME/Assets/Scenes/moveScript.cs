@@ -50,7 +50,7 @@ public class MoveScript : MonoBehaviour
                         speedx = speedx + accel;
                     }
                 }
-                Debug.Log(count + ": Speed: x" + speedx);
+                //Debug.Log(count + ": Speed: x" + speedx);
             //}
         }
         else
@@ -91,7 +91,7 @@ public class MoveScript : MonoBehaviour
                         speedy = speedy + accel;
                     }
                 }
-                Debug.Log(count + ": Speed y: " + speedy);
+                //Debug.Log(count + ": Speed y: " + speedy);
             //}
         }
         else

@@ -19,21 +19,29 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Vector3 pos = transform.position;
+
         var playerZ = GameObject.Find("player");
         if (playerZ)
         {
             playerPos = playerZ.transform.position;
+            Debug.Log("Found Player");
         }
-
-        Vector3 pos = transform.position;
-
-
-        if (pos.x < playerPos.x)
+        else
         {
-            speedx = speedx + accel;
+            Debug.Log("Can't Find Player");
         }
+
+
+        // MOB IS NOT MOVING!! 
+
+        //if (pos.x < playerPos.x)
+        //{
+
+            speedx = 5;
+        //}
 
         pos.y += speedy * Time.deltaTime;
         pos.x += speedx * Time.deltaTime;
