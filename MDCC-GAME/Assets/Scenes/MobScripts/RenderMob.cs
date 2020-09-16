@@ -36,7 +36,28 @@ public class RenderMob : MonoBehaviour
 
     void RenderCharacter()
     {
+        if (walking == true)
+        {
+            walkCount++;
+            if (walkCount == 1)
+            {
+                spriteRenderer.sprite = walk1;
+            }
+            else if (walkCount == 50)
+            {
+                spriteRenderer.sprite = walk2;
+            }
+            else if (walkCount == 100)
+            {
+                spriteRenderer.sprite = walk3;
 
+            }
+            else if (walkCount == 150)
+            {
+                walkCount = 0;
+            }
+
+        }
     }
 
 }

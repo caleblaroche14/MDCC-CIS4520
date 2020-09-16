@@ -95,7 +95,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
   m_Name: 
@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
-  walk1: {fileID: 0}
-  walk2: {fileID: 0}
-  walk3: {fileID: 0}
+  walk1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
+  walk2: {fileID: 21300000, guid: 53318e73012527849ba9a013cd2b5b1c, type: 3}
+  walk3: {fileID: 21300000, guid: 400ab75c626885f4fbfb3ffa93a5062b, type: 3}
   jump1: {fileID: 0}
   walking: 1
   jumping: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   speedx: 0
   speedy: 0
   accel: 1
+  haha: 1
 --- !u!1 &8220798033456041657
 GameObject:
   m_ObjectHideFlags: 0
