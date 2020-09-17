@@ -7,12 +7,11 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    public float speedCap = 10f;
+    public float speedCap = 4f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
-    public int accelStart = 4;
-    private int accel;
-    public float haha = 1f;
+    //public float accelStart = .000001f;
+    public float accel = 1f;
     System.Random rnd = new System.Random();
     
     Vector3 playerPos;
@@ -22,7 +21,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        accel = (rnd.Next((accelStart - 2), (accelStart + 2)));
+        //accel = accelStart;//(rnd.Next((accelStart - 2), (accelStart + 2)));
 
     }
 
@@ -52,42 +51,91 @@ public class Movement : MonoBehaviour
 
         float distanceX = Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
         float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
-        Debug.Log("Distance X from player: " + distanceX);
-        Debug.Log("Distance Y from player: " + distanceY);
+        //Debug.Log("Distance X from player: " + distanceX);
+        //Debug.Log("Distance Y from player: " + distanceY);
         if (distanceX > .5)
         {
-            if (pos.x < playerPos.x)
+            //Debug.Log("far enough away x");
+
+            if (playerPos.x < pos.x)
             {
-                speedx = accel;
+                if (speedx > (speedCap * -1))
+                {
+                    speedx = speedx - accel;
+                }
             }
-            if (pos.x > playerPos.x)
+            if (playerPos.x > pos.x)
             {
-                speedx = -accel;
+                if (speedx < speedCap)
+                {
+
+                    speedx = speedx + accel;
+                }
             }
         }
         else
         {
-            speedx = 0;
+            //Debug.Log("Not far enough away x");
+            if (Math.Abs(speedx) != 0)
+            {
+                if (speedx > 0)
+                {
+                    speedx = speedx - (accel);
+                }
+                if (speedx < 0)
+                {
+                    speedx = speedx + (accel);
+                }
+            }
+            else
+            {
+                speedx = 0;
+            }
         }
 
         // y axis
         if (distanceY > .5)
         {
-            if (pos.y < playerPos.y)
+            //Debug.Log("far enough away x");
+
+            if (playerPos.y < pos.y)
             {
-                speedy = accel;
+                if (speedy > (speedCap * -1))
+                {
+                    speedy = speedy - accel;
+                }
             }
-            if (pos.y > playerPos.y)
+            if (playerPos.y > pos.y)
             {
-                speedy = -accel;
+                if (speedy < speedCap)
+                {
+
+                    speedy = speedy + accel;
+                }
             }
         }
         else
         {
-            speedy = 0;
+            if (Math.Abs(speedy) != 0)
+            {
+                if (speedy > 0)
+                {
+                    speedy = speedy - (accel);
+                }
+                if (speedy < 0)
+                {
+                    speedy = speedy + (accel);
+                }
+            }
+            else
+            {
+                speedy = 0;
+            }
         }
-        
+
         // adjust pos
+        Debug.Log("speedx: " + speedx);
+        Debug.Log("speedy: " + speedy);
         pos.y += speedy * Time.deltaTime;
         pos.x += speedx * Time.deltaTime;
 

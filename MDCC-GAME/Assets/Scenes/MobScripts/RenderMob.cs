@@ -17,6 +17,7 @@ public class RenderMob : MonoBehaviour
 
     public bool walking = true;
     public bool jumping = false;
+    public bool attacking = false;
 
     private SpriteRenderer spriteRenderer;
 
@@ -56,7 +57,6 @@ public class RenderMob : MonoBehaviour
             {
                 walkCount = 0;
             }
-
         }
     }
 
