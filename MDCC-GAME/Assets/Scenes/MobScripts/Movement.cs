@@ -10,8 +10,12 @@ public class Movement : MonoBehaviour
     public float speedCap = 4f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
-    //public float accelStart = .000001f;
-    public float accel = 1f;
+    public float accelStart = 1f;
+    private float accel;
+
+    public float maxSpeedPercent = 10.25f;
+    public float minSpeedPercent = .005f;
+    //accel = accelStart;
     System.Random rnd = new System.Random();
     
     Vector3 playerPos;
@@ -21,7 +25,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        //accel = accelStart;//(rnd.Next((accelStart - 2), (accelStart + 2)));
+        
+        accel = UnityEngine.Random.Range((accelStart * minSpeedPercent), (accelStart * maxSpeedPercent));
+        Debug.Log("accel: " + accel);
+        //accelStart;//(rnd.Next((accelStart - 2), (accelStart + 2)));
 
     }
 
@@ -37,11 +44,11 @@ public class Movement : MonoBehaviour
         if (playerZ)
         {
             playerPos = playerZ.transform.position;
-            Debug.Log("Found Player");
+            //Debug.Log("Found Player");
         }
         else
         {
-            Debug.Log("Can't Find Player");
+            //Debug.Log("Can't Find Player");
         }
 
 
@@ -134,8 +141,8 @@ public class Movement : MonoBehaviour
         }
 
         // adjust pos
-        Debug.Log("speedx: " + speedx);
-        Debug.Log("speedy: " + speedy);
+        //Debug.Log("speedx: " + speedx);
+        //Debug.Log("speedy: " + speedy);
         pos.y += speedy * Time.deltaTime;
         pos.x += speedx * Time.deltaTime;
 
@@ -153,4 +160,5 @@ public class Movement : MonoBehaviour
         }
 
     }
+
 }
