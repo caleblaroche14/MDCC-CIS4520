@@ -15,19 +15,29 @@ public class Movement : MonoBehaviour
 
     public float maxSpeedPercent = 10.25f;
     public float minSpeedPercent = .005f;
-    //accel = accelStart;
+
     System.Random rnd = new System.Random();
     
     Vector3 playerPos;
 
     private SpriteRenderer mySpriteRenderer;
 
+    public List<GameObject> enemyArray;
+    private bool closeToEnemiesX = false;
+    public bool closeToEnemiesY = false;
+
     void Start()
     {
+        // get enemy array
+        GameObject initial = GameObject.Find("init");
+        InitScript intiscript = initial.GetComponent<InitScript>();
+        enemyArray = intiscript.enemies;
+
+
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         
         accel = UnityEngine.Random.Range((accelStart * minSpeedPercent), (accelStart * maxSpeedPercent));
-        Debug.Log("accel: " + accel);
+        //Debug.Log("accel: " + accel);
         //accelStart;//(rnd.Next((accelStart - 2), (accelStart + 2)));
 
     }
@@ -35,9 +45,28 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
+
         Vector3 pos = transform.position;
+
+
+        this.closeToEnemiesX = false;
+        // NEEDS FIXING, NOT TRIGGERING
+        foreach (GameObject o in enemyArray)
+        {
+            if (o.GetInstanceID() != gameObject.GetInstanceID())
+            {
+                Vector3 enemyPos = o.transform.position;
+                float enemyDistanceX = Math.Abs(Math.Abs(enemyPos.x) - Math.Abs(pos.x));
+                if (enemyDistanceX < .00001)
+                {
+                    
+                    this.closeToEnemiesX = false;
+                    Debug.Log("CloseToEnemiesX = " + this.closeToEnemiesX);
+                }
+            }
+        }
+        
+
 
         // find player gameObj
         var playerZ = GameObject.Find("player");
@@ -66,10 +95,12 @@ public class Movement : MonoBehaviour
 
             if (playerPos.x < pos.x)
             {
-                if (speedx > (speedCap * -1))
-                {
-                    speedx = speedx - accel;
-                }
+
+                    if (speedx > (speedCap * -1))
+                    {
+                        speedx = speedx - accel;
+                    }
+               
             }
             if (playerPos.x > pos.x)
             {
@@ -143,8 +174,14 @@ public class Movement : MonoBehaviour
         // adjust pos
         //Debug.Log("speedx: " + speedx);
         //Debug.Log("speedy: " + speedy);
+
         pos.y += speedy * Time.deltaTime;
-        pos.x += speedx * Time.deltaTime;
+
+        if (this.closeToEnemiesX == false)
+        {
+            pos.x += speedx * Time.deltaTime;
+            Debug.Log("Moving");
+        } 
 
         // move mob
         transform.position = pos;

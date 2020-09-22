@@ -13,18 +13,18 @@ public class InitScript : MonoBehaviour
     int spawnx;
     int spawny;
 
+    public List<GameObject> enemies = new List<GameObject>();
+
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
     {
-        // Instantiate at position (0, 0, 0) and zero rotation.
-
-
         for (int i = 0; i < gruntCount; i++)
         {
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
-            Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+            enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
+
     }
 
     int GetRandom(int min, int max)
