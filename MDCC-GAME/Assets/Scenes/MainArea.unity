@@ -1098,8 +1098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c6d5e4f8747d343a64ee11d22540c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mob: {fileID: 8220798032223836127, guid: 23b53d4ec819db944a54b77abece731f, type: 3}
-  mobCount: 10
+  grunt: {fileID: 8220798032223836127, guid: 23b53d4ec819db944a54b77abece731f, type: 3}
+  gruntCount: 10
 --- !u!4 &1503169018
 Transform:
   m_ObjectHideFlags: 0

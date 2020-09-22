@@ -5,8 +5,8 @@ using UnityEngine;
 public class InitScript : MonoBehaviour
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
-    public GameObject mob;
-    public int mobCount = 10;
+    public GameObject grunt;
+    public int gruntCount = 10;
     System.Random rnd = new System.Random();
     private int lastNumber;
 
@@ -19,11 +19,11 @@ public class InitScript : MonoBehaviour
         // Instantiate at position (0, 0, 0) and zero rotation.
 
 
-        for (int i = 0; i < mobCount; i++)
+        for (int i = 0; i < gruntCount; i++)
         {
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
-            Instantiate(mob, new Vector3(spawnx, spawny, 0), Quaternion.identity);
+            Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity);
         }
     }
 
