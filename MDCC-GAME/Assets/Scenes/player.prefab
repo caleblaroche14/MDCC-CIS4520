@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2694507105641387601}
   - component: {fileID: 2694507105641387602}
   - component: {fileID: 2694507105641387600}
+  - component: {fileID: -717490810625114158}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -168,7 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244659677b11e3e4585bd74ae624b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10.4
+  speedCap: 10
+  speedx: 0
+  speedy: 0
+  accel: 1
+  count: 0
   jumpSpeed: 5
 --- !u!212 &2694507105641387615
 SpriteRenderer:
@@ -234,7 +239,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite1: {fileID: 0}
-  sprite2: {fileID: 0}
+  walk1: {fileID: 0}
+  walk2: {fileID: 0}
+  walk3: {fileID: 0}
+  jump1: {fileID: 0}
+  walking: 1
+  jumping: 0
 --- !u!50 &2694507105641387601
 Rigidbody2D:
   serializedVersion: 4
@@ -294,3 +304,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6de69f68defd534e8fb86bcee0b805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-717490810625114158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694507105641387607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05314cb9fd9483429163de7098a8a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
