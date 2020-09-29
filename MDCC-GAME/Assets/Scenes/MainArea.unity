@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grunt: {fileID: 8220798032223836127, guid: 23b53d4ec819db944a54b77abece731f, type: 3}
-  gruntCount: 20
+  gruntCount: 1
   enemies: []
 --- !u!4 &1503169018
 Transform:

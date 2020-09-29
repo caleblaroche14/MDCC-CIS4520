@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    public float range = .5f;
+    
+    // movement stuff
     public float speedCap = 4f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
@@ -17,8 +19,13 @@ public class Movement : MonoBehaviour
     public float minSpeedPercent = .005f;
 
     System.Random rnd = new System.Random();
-    
+
+    // attack stuff
+    public int damage = 5;
+    public float playerHp;
     Vector3 playerPos;
+    public int coolDown = 0;
+    public int coolDownTime = 200;
 
     private SpriteRenderer mySpriteRenderer;
 
@@ -28,6 +35,12 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        //coolDown = coolDownTime;
+        var playerZ = GameObject.Find("player");
+        pHealth hpScript = playerZ.GetComponent<pHealth>();
+        playerHp = hpScript.hp;
+
+
         // get enemy array
         GameObject initial = GameObject.Find("init");
         InitScript intiscript = initial.GetComponent<InitScript>();
@@ -45,8 +58,29 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // find player gameObj
+        var playerZ = GameObject.Find("player");
+        if (playerZ)
+        {
+            playerPos = playerZ.transform.position;
+        }
+        else
+        {
+            Debug.Log("Can't Find Player");
+        }
 
+        // get player health
+        pHealth hpScript = playerZ.GetComponent<pHealth>();
+
+        // find position
         Vector3 pos = transform.position;
+
+
+        // find distances between mob and player
+        float distanceX = Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
+        float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
+        //Debug.Log("Distance X from player: " + distanceX);
+        //Debug.Log("Distance Y from player: " + distanceY);
 
 
         this.closeToEnemiesX = false;
@@ -65,31 +99,10 @@ public class Movement : MonoBehaviour
                 }
             }
         }
-        
+       
 
-
-        // find player gameObj
-        var playerZ = GameObject.Find("player");
-        if (playerZ)
-        {
-            playerPos = playerZ.transform.position;
-            //Debug.Log("Found Player");
-        }
-        else
-        {
-            //Debug.Log("Can't Find Player");
-        }
-
-
-        // go toward player
-
-        // x axis
-
-        float distanceX = Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
-        float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
-        //Debug.Log("Distance X from player: " + distanceX);
-        //Debug.Log("Distance Y from player: " + distanceY);
-        if (distanceX > .5)
+        // if distance is less than
+        if (distanceX > range)
         {
             //Debug.Log("far enough away x");
 
@@ -147,7 +160,6 @@ public class Movement : MonoBehaviour
             {
                 if (speedy < speedCap)
                 {
-
                     speedy = speedy + accel;
                 }
             }
@@ -171,22 +183,32 @@ public class Movement : MonoBehaviour
             }
         }
 
-        // adjust pos
-        //Debug.Log("speedx: " + speedx);
-        //Debug.Log("speedy: " + speedy);
+        // attack player if in range
+        coolDown += 1;
+        if ((distanceX < range) && (distanceY < range))
+        {           
+            if (coolDown >= coolDownTime) 
+            {
+                Debug.Log("Attacked!");
+                playerHp -= damage;
+                coolDown = 0;
+            }
+        }
+        //Debug.Log("Mob cooldown: " + coolDown);
+        //Debug.Log("Health: " + playerHp);
 
+        // adjust pos
         pos.y += speedy * Time.deltaTime;
 
         if (this.closeToEnemiesX == false)
         {
             pos.x += speedx * Time.deltaTime;
-            Debug.Log("Moving");
         } 
 
         // move mob
         transform.position = pos;
 
-
+        // flip the sprite
         if (speedx < 0)
         {
             mySpriteRenderer.flipX = true;
@@ -195,6 +217,8 @@ public class Movement : MonoBehaviour
         {
             mySpriteRenderer.flipX = false;
         }
+
+        
 
     }
 
