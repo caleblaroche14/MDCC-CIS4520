@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8113132577259571752}
   - component: {fileID: 8346313414231140777}
   - component: {fileID: -7186310265294378149}
+  - component: {fileID: 3955867204689750852}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Untagged
@@ -259,6 +260,8 @@ MonoBehaviour:
   accelStart: 0.32
   maxSpeedPercent: 10.25
   minSpeedPercent: 0.005
+  enemyArray: []
+  closeToEnemiesY: 0
 --- !u!61 &8346313414231140777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -306,6 +309,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3955867204689750852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220798032223836127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967c7b004798c3c4da78e4270487609c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  coolDownTime: 600
+  coolDown: 0
+  distanceX: 0
+  distanceY: 0
 --- !u!1 &8220798033456041657
 GameObject:
   m_ObjectHideFlags: 0
