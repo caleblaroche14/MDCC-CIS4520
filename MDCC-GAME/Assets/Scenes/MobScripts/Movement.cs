@@ -22,7 +22,6 @@ public class Movement : MonoBehaviour
 
     // attack stuff
     public int damage = 5;
-    public float playerHp;
     Vector3 playerPos;
     public int coolDown = 0;
     public int coolDownTime = 200;
@@ -33,13 +32,16 @@ public class Movement : MonoBehaviour
     private bool closeToEnemiesX = false;
     public bool closeToEnemiesY = false;
 
+    // init player and script variables 
+    GameObject p;
+    pHealth ph;
+
+
     void Start()
     {
-        //coolDown = coolDownTime;
-        var playerZ = GameObject.Find("player");
-        pHealth hpScript = playerZ.GetComponent<pHealth>();
-        playerHp = hpScript.hp;
-
+        // get player object and script
+        p = GameObject.FindWithTag("Player");
+        ph = p.GetComponent<pHealth>();
 
         // get enemy array
         GameObject initial = GameObject.Find("init");
@@ -50,27 +52,20 @@ public class Movement : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         
         accel = UnityEngine.Random.Range((accelStart * minSpeedPercent), (accelStart * maxSpeedPercent));
-        //Debug.Log("accel: " + accel);
-        //accelStart;//(rnd.Next((accelStart - 2), (accelStart + 2)));
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // find player gameObj
-        var playerZ = GameObject.Find("player");
-        if (playerZ)
+        
+        if (p)
         {
-            playerPos = playerZ.transform.position;
+            playerPos = p.transform.position;
         }
         else
         {
             Debug.Log("Can't Find Player");
         }
-
-        // get player health
-        pHealth hpScript = playerZ.GetComponent<pHealth>();
 
         // find position
         Vector3 pos = transform.position;
@@ -79,30 +74,12 @@ public class Movement : MonoBehaviour
         // find distances between mob and player
         float distanceX = Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
         float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
-        //Debug.Log("Distance X from player: " + distanceX);
-        //Debug.Log("Distance Y from player: " + distanceY);
-
-
-        this.closeToEnemiesX = false;
-        // NEEDS FIXING, NOT TRIGGERING
-        foreach (GameObject o in enemyArray)
-        {
-            if (o.GetInstanceID() != gameObject.GetInstanceID())
-            {
-                Vector3 enemyPos = o.transform.position;
-                float enemyDistanceX = Math.Abs(Math.Abs(enemyPos.x) - Math.Abs(pos.x));
-                if (enemyDistanceX < .00001)
-                {
-                    
-                    this.closeToEnemiesX = false;
-                    Debug.Log("CloseToEnemiesX = " + this.closeToEnemiesX);
-                }
-            }
-        }
-       
+        Debug.Log("Distance X from player: " + distanceX);
+        Debug.Log("Distance Y from player: " + distanceY);
+     
 
         // if distance is less than
-        if (distanceX > range)
+        if (distanceX > (range))
         {
             //Debug.Log("far enough away x");
 
@@ -145,7 +122,7 @@ public class Movement : MonoBehaviour
         }
 
         // y axis
-        if (distanceY > .5)
+        if (distanceY > range)
         {
             //Debug.Log("far enough away x");
 
@@ -189,36 +166,34 @@ public class Movement : MonoBehaviour
         {           
             if (coolDown >= coolDownTime) 
             {
-                Debug.Log("Attacked!");
-                playerHp -= damage;
-                coolDown = 0;
+                if (ph.getHealth() > 0)
+                {
+                    ph.damagePlayer(damage);
+                    coolDown = 0;
+                }
+                
             }
         }
         //Debug.Log("Mob cooldown: " + coolDown);
-        //Debug.Log("Health: " + playerHp);
 
         // adjust pos
         pos.y += speedy * Time.deltaTime;
-
-        if (this.closeToEnemiesX == false)
-        {
-            pos.x += speedx * Time.deltaTime;
-        } 
-
+        pos.x += speedx * Time.deltaTime;
+ 
         // move mob
         transform.position = pos;
 
         // flip the sprite
-        if (speedx < 0)
+        if (speedx < .3)
         {
             mySpriteRenderer.flipX = true;
         }
-        else
+        if (speedx > .3)
         {
             mySpriteRenderer.flipX = false;
         }
 
-        
+        //Debug.Log("SpeedX: " + speedx);
 
     }
 

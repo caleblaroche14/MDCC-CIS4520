@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 3955867204689750852}
   m_Layer: 0
   m_Name: Grunt
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,16 +255,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 0.5
-  speedCap: 4.4
+  speedCap: 2.5
   speedx: 0
   speedy: 0
-  accelStart: 0.32
-  maxSpeedPercent: 10.25
+  accelStart: 0.1
+  maxSpeedPercent: 10.46
   minSpeedPercent: 0.005
-  damage: 5
-  playerHp: 0
+  damage: 1
   coolDown: 0
-  coolDownTime: 25
+  coolDownTime: 17
   enemyArray: []
   closeToEnemiesY: 0
 --- !u!61 &8346313414231140777
@@ -321,7 +320,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 967c7b004798c3c4da78e4270487609c, type: 3}
   m_Name: 
