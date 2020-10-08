@@ -82,34 +82,50 @@ public class Movement : MonoBehaviour
         
         if (distance > (range))
         {
-            if (playerPos.x < pos.x)
+            if (playerPos.x == pos.x)
             {
-                if (speedx > (speedCap * -1))
-                {
-                    speedx = speedx - accel;
-                }
-               
+                speedx = speedx;
             }
-            if (playerPos.x > pos.x)
+            else
             {
-                if (speedx < speedCap)
+                if (playerPos.x < pos.x)
                 {
+                    if (speedx > (speedCap * -1))
+                    {
+                        speedx = speedx - accel;
+                    }
 
-                    speedx = speedx + accel;
+                }
+
+                if (playerPos.x > pos.x)
+                {
+                    if (speedx < speedCap)
+                    {
+
+                        speedx = speedx + accel;
+                    }
                 }
             }
-            if (playerPos.y < pos.y)
+
+            if (playerPos.y == pos.y)
             {
-                if (speedy > (speedCap * -1))
-                {
-                    speedy = speedy - accel;
-                }
+                speedy = speedy;
             }
-            if (playerPos.y > pos.y)
+            else
             {
-                if (speedy < speedCap)
+                if (playerPos.y < pos.y)
                 {
-                    speedy = speedy + accel;
+                    if (speedy > (speedCap * -1))
+                    {
+                        speedy = speedy - accel;
+                    }
+                }
+                if (playerPos.y > pos.y)
+                {
+                    if (speedy < speedCap)
+                    {
+                        speedy = speedy + accel;
+                    }
                 }
             }
         }
