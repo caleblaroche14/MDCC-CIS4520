@@ -495,14 +495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244659677b11e3e4585bd74ae624b87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleSpeed: 2
-  jumpTime: 25
+  scaleSpeed: 3
+  jumpTime: 50
   jumpSpeed: 1
   jumpCount: 0
   onGround: 1
   jU: 0
   jD: 0
-  upSpeed: 500
+  upSpeed: 2
   speedCap: 100
   speedx: 0
   speedy: 0

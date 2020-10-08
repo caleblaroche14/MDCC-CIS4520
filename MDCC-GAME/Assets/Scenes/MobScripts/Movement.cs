@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float range = .5f;
+    public float range = 10f;
     
     // movement stuff
     public float speedCap = 4f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
     public float accelStart = 1f;
+    public float buffer = 5f;
     private float accel;
 
     public float maxSpeedPercent = 10.25f;
@@ -82,12 +83,14 @@ public class Movement : MonoBehaviour
         
         if (distance > (range))
         {
-            if (playerPos.x == pos.x)
+            if (playerPos.x+buffer >= pos.x && playerPos.x-buffer <= pos.x)
             {
-                speedx = speedx;
+                speedx = 0;
+                //Debug.Log("Stuck here");
             }
             else
             {
+
                 if (playerPos.x < pos.x)
                 {
                     if (speedx > (speedCap * -1))
@@ -107,9 +110,9 @@ public class Movement : MonoBehaviour
                 }
             }
 
-            if (playerPos.y == pos.y)
+            if (playerPos.y+buffer >= pos.y && playerPos.y-buffer <= pos.y)
             {
-                speedy = speedy;
+                speedy = 0;
             }
             else
             {

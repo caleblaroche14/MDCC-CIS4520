@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
-public class MoveScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     // jump vars
 
@@ -20,13 +20,13 @@ public class MoveScript : MonoBehaviour
     public bool jU = false;
     public bool jD = false;
 
-    public float upSpeed = 2f;
+    public float upSpeed = 500f;
 
     // move vars
-    public float speedCap = 10f;
+    public float speedCap = 100f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
-    public float accel = 1f;
+    public float accel = 10f;
 
 
     private Vector2 velocity;
@@ -192,7 +192,7 @@ public class MoveScript : MonoBehaviour
             }
         }
 
-        Debug.Log("Speedy: " + speedy);
+        //Debug.Log("Speedy: " + speedy);
 
         // move the obj
         transform.localScale = scale;
