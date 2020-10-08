@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grunt: {fileID: 8220798032223836127, guid: 23b53d4ec819db944a54b77abece731f, type: 3}
-  gruntCount: 1
+  gruntCount: 3
   enemies: []
 --- !u!4 &1503169018
 Transform:
@@ -1792,6 +1792,14 @@ PrefabInstance:
     - target: {fileID: 2694507105641387601, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694507105641387601, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694507105641387601, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2694507105641387602, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x

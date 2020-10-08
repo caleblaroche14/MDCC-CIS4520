@@ -33,6 +33,30 @@ public class Movement : MonoBehaviour
     private bool closeToEnemiesX = false;
     public bool closeToEnemiesY = false;
 
+    // animation stuff 
+    public Sprite sprite1; // default
+
+    // string that holds punching, walking, etc to tell the program what it should be doing
+    public string animType;
+
+    // the count of the frame -_(-_-)_-
+    int frameCount = 0;
+
+
+    public Sprite walk1; // Drag your first sprite here
+    public Sprite walk2; // Drag your second sprite here
+    public Sprite walk3; // Drag your third sprite here
+
+    public Sprite punch1;
+    public Sprite punch2;
+    public bool punched = false;
+
+    // bool of what mob is doing
+    public bool walking;
+    public bool punching;
+
+    private SpriteRenderer spriteRenderer;
+
     // init player and script variables 
     GameObject p;
     pHealth ph;
@@ -53,12 +77,32 @@ public class Movement : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         
         accel = UnityEngine.Random.Range((accelStart * minSpeedPercent), (accelStart * maxSpeedPercent));
+
+        // accessing the SpriteRenderer that is attached to the Gameobject
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprite1;
+
+        // set inital anim
+        walking = true;
+        punching = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        // animate
+        if (walking == true)
+        {
+            animType = "walking";
+        }
+        else if (punching == true)
+        {
+            animType = "punching";
+        }
+        // call method to change sprite RenderCharacter(action,frames)
+        RenderCharacter(animType);
+
+        // move mob
         if (p)
         {
             playerPos = p.transform.position;
@@ -83,6 +127,10 @@ public class Movement : MonoBehaviour
         
         if (distance > (range))
         {
+            // set anim type
+            walking = true;
+            punching = false;
+
             if (playerPos.x+buffer >= pos.x && playerPos.x-buffer <= pos.x)
             {
                 speedx = 0;
@@ -172,15 +220,18 @@ public class Movement : MonoBehaviour
         // attack player if in range
         coolDown += 1;
         if (distance < range)
-        {           
-            if (coolDown >= coolDownTime) 
+        {
+            // set anim type
+            punching = true;
+            walking = false;
+
+            if (punched == true)
             {
-                if (ph.getHealth() > 0)
-                {
-                    ph.damagePlayer(damage);
-                    coolDown = 0;
-                }
-                
+                ph.damagePlayer(damage);
+                coolDown = 0;
+
+                // set punch back so it only damages player on one frame;
+                punched = false;
             }
         }
         //Debug.Log("Mob cooldown: " + coolDown);
@@ -203,8 +254,54 @@ public class Movement : MonoBehaviour
         }
 
         //Debug.Log("SpeedX: " + speedx);
+        Debug.Log("Walking: " + walking);
+        Debug.Log("Punching: " + punching);
 
 
+    }
+
+    // render the character, damage player if animation is punching
+    void RenderCharacter(string t)
+    {
+
+        frameCount++;
+        if (t == "walking")
+        {
+            Debug.Log("walking");
+            if (frameCount == 1)
+            {
+                spriteRenderer.sprite = walk1;
+            }
+            else if (frameCount == 50)
+            {
+                spriteRenderer.sprite = walk2;
+            }
+            else if (frameCount == 100)
+            {
+                spriteRenderer.sprite = walk3;
+            }
+            else if (frameCount == 150)
+            {
+                frameCount = 0;
+            }
+        }
+        if (t == "punching")
+        {
+            Debug.Log("punching");
+            if (frameCount == 1)
+            {
+                spriteRenderer.sprite = punch1;
+            }
+            else if (frameCount == 50)
+            {
+                spriteRenderer.sprite = punch2;
+                punched = true;
+            }
+            else if (frameCount == 100)
+            {
+                frameCount = 0;
+            }
+        }
 
     }
 

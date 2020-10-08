@@ -215,19 +215,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6103402ab34e64b44bb34d6e3bfbbf71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
+  animType: 
   walk1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
   walk2: {fileID: 21300000, guid: 53318e73012527849ba9a013cd2b5b1c, type: 3}
   walk3: {fileID: 21300000, guid: 400ab75c626885f4fbfb3ffa93a5062b, type: 3}
-  jump1: {fileID: 0}
+  punch1: {fileID: 0}
+  punch2: {fileID: 0}
+  punched: 0
   walking: 1
-  jumping: 0
-  attacking: 0
+  punching: 0
 --- !u!114 &9174927184613080301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,11 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5530894081b1cab4289058a93c977051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
+  range: 10
   speedCap: 10
   speedx: 0
   speedy: 0
   accelStart: 0.5
+  buffer: 5
   maxSpeedPercent: 100
   minSpeedPercent: 5
   damage: 1
@@ -265,6 +268,16 @@ MonoBehaviour:
   coolDownTime: 17
   enemyArray: []
   closeToEnemiesY: 0
+  sprite1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
+  animType: 
+  walk1: {fileID: 21300000, guid: a5a39b31ecd972e4697872ce7539b0c2, type: 3}
+  walk2: {fileID: 21300000, guid: 53318e73012527849ba9a013cd2b5b1c, type: 3}
+  walk3: {fileID: 21300000, guid: 400ab75c626885f4fbfb3ffa93a5062b, type: 3}
+  punch1: {fileID: 21300000, guid: f313056dfe2e1d644b75d1e2db593d5d, type: 3}
+  punch2: {fileID: 21300000, guid: 1514d86da4b80dd4ea20ba7f2c8a6c52, type: 3}
+  punched: 0
+  walking: 0
+  punching: 0
 --- !u!61 &8346313414231140777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -272,7 +285,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -299,11 +312,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8220798032223836127}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
