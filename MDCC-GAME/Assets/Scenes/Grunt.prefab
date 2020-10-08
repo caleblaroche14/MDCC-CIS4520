@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 8113132577259571752}
   - component: {fileID: 8346313414231140777}
   - component: {fileID: -7186310265294378149}
-  - component: {fileID: 3955867204689750852}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: enemy
@@ -34,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 8220798032223836127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 8220798033456041654}
   m_Father: {fileID: 0}
@@ -254,13 +253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5530894081b1cab4289058a93c977051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0.5
-  speedCap: 2.5
+  range: 5
+  speedCap: 10
   speedx: 0
   speedy: 0
-  accelStart: 0.1
-  maxSpeedPercent: 10.46
-  minSpeedPercent: 0.005
+  accelStart: 0.5
+  maxSpeedPercent: 100
+  minSpeedPercent: 5
   damage: 1
   coolDown: 0
   coolDownTime: 17
@@ -313,24 +312,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3955867204689750852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8220798032223836127}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967c7b004798c3c4da78e4270487609c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  coolDownTime: 0
-  coolDown: 0
-  distanceX: 0
-  distanceY: 0
-  playerHp: 0
 --- !u!1 &8220798033456041657
 GameObject:
   m_ObjectHideFlags: 0

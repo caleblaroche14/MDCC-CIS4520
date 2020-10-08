@@ -7,19 +7,38 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
+    // jump vars
+
+    public float scaleSpeed = 3f;
+
+    public int jumpTime = 50;
+    public int jumpSpeed = 1;
+    public int jumpCount = 0;
+
+    public bool onGround = true;
+
+    public bool jU = false;
+    public bool jD = false;
+
+    public float upSpeed = 2f;
+
+    // move vars
     public float speedCap = 10f;
     public float speedx = 0.0f;
     public float speedy = 0.0f;
     public float accel = 1f;
 
+
+    private Vector2 velocity;
+    private Rigidbody2D rb2D;
+
     public int count = 0;
-   // public float accelSpeed = 1.01f;
-    public float jumpSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb2D = gameObject.GetComponent<Rigidbody2D>();
+        velocity = new Vector2(0f, 0f);
 
     }
 
@@ -29,6 +48,7 @@ public class MoveScript : MonoBehaviour
     void FixedUpdate()
     {
          
+        // moving 
         Vector3 pos = transform.position;
         
         if (Input.GetKey("a") || Input.GetKey("d"))
@@ -112,10 +132,74 @@ public class MoveScript : MonoBehaviour
                 speedy = 0;
             }
         }
-        
-        pos.y += speedy * Time.deltaTime;
-        pos.x += speedx * Time.deltaTime;
 
+        // jumping 
+        Vector3 scale = transform.localScale;
+
+        // checking to see if jumpCount is 0, if so the obj is on ground
+        if (jumpCount > 0)
+        {
+            onGround = false;
+        }
+        else
+        {
+            onGround = true;
+        }
+
+
+
+        // checking if key is down or not
+        if (Input.GetKeyDown("space"))
+        {
+            if (jumpCount == 0)
+            {
+                jU = true;
+                jD = false;
+            }
+        }
+        else
+        {
+
+        }
+
+        // if jumping up
+        if (jU == true)
+        {
+            if (jumpCount < jumpTime)
+            {
+                jumpCount += jumpSpeed;
+                scale.x += scaleSpeed * Time.deltaTime;
+                scale.y += scaleSpeed * Time.deltaTime;
+                speedy += upSpeed * Time.deltaTime;
+            }
+
+            if (jumpCount == jumpTime)
+            {
+                jU = false;
+                jD = true;
+            }
+        }
+
+        // if going down
+        if (jD == true)
+        {
+            if (onGround != true)
+            {
+                jumpCount -= jumpSpeed;
+                scale.x -= scaleSpeed * Time.deltaTime;
+                scale.y -= scaleSpeed * Time.deltaTime;
+                speedy -= upSpeed * Time.deltaTime;
+            }
+        }
+
+        Debug.Log("Speedy: " + speedy);
+
+        // move the obj
+        transform.localScale = scale;
+        velocity = new Vector2(speedx, speedy);
+        rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
+
+
     }
 }

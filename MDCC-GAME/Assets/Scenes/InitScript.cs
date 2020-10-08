@@ -23,6 +23,8 @@ public class InitScript : MonoBehaviour
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
             enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+
+            Application.targetFrameRate = 60;
         }
 
     }

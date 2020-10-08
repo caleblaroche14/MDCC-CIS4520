@@ -29,6 +29,6 @@ public class pHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Health: " + hp);
+        //Debug.Log("Health: " + hp);
     }
 }

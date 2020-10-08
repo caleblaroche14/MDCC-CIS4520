@@ -11,12 +11,12 @@ public class Health : MonoBehaviour
 
     }
 
-    public void damagePlayer(int damage)
+    public void damage(int damage)
     {
         hp -= damage;
     }
 
-    public void healPlayer(int heals)
+    public void heal(int heals)
     {
         hp += heals;
     }
@@ -28,6 +28,6 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Health: " + hp);
+        //Debug.Log("Health: " + hp);
     }
 }

@@ -72,24 +72,22 @@ public class Movement : MonoBehaviour
 
 
         // find distances between mob and player
-        float distanceX = Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
-        float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
-        Debug.Log("Distance X from player: " + distanceX);
-        Debug.Log("Distance Y from player: " + distanceY);
+        float distance = Vector3.Distance(playerPos, pos);//Math.Abs(Math.Abs(playerPos.x) - Math.Abs(pos.x));
+        //float distanceY = Math.Abs(Math.Abs(playerPos.y) - Math.Abs(pos.y));
+        //Debug.Log("Distance from player: " + distance);
      
 
-        // if distance is less than
-        if (distanceX > (range))
-        {
-            //Debug.Log("far enough away x");
+        // if distance is greater than range
 
+        
+        if (distance > (range))
+        {
             if (playerPos.x < pos.x)
             {
-
-                    if (speedx > (speedCap * -1))
-                    {
-                        speedx = speedx - accel;
-                    }
+                if (speedx > (speedCap * -1))
+                {
+                    speedx = speedx - accel;
+                }
                
             }
             if (playerPos.x > pos.x)
@@ -100,32 +98,6 @@ public class Movement : MonoBehaviour
                     speedx = speedx + accel;
                 }
             }
-        }
-        else
-        {
-            //Debug.Log("Not far enough away x");
-            if (Math.Abs(speedx) != 0)
-            {
-                if (speedx > 0)
-                {
-                    speedx = speedx - (accel);
-                }
-                if (speedx < 0)
-                {
-                    speedx = speedx + (accel);
-                }
-            }
-            else
-            {
-                speedx = 0;
-            }
-        }
-
-        // y axis
-        if (distanceY > range)
-        {
-            //Debug.Log("far enough away x");
-
             if (playerPos.y < pos.y)
             {
                 if (speedy > (speedCap * -1))
@@ -143,6 +115,22 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            if (Math.Abs(speedx) != 0)
+            {
+                if (speedx > 0)
+                {
+                    speedx = speedx - (accel);
+                }
+                if (speedx < 0)
+                {
+                    speedx = speedx + (accel);
+                }
+            }
+            else
+            {
+                speedx = 0;
+            }
+
             if (Math.Abs(speedy) != 0)
             {
                 if (speedy > 0)
@@ -160,9 +148,11 @@ public class Movement : MonoBehaviour
             }
         }
 
+
+
         // attack player if in range
         coolDown += 1;
-        if ((distanceX < range) && (distanceY < range))
+        if (distance < range)
         {           
             if (coolDown >= coolDownTime) 
             {
@@ -194,6 +184,8 @@ public class Movement : MonoBehaviour
         }
 
         //Debug.Log("SpeedX: " + speedx);
+
+
 
     }
 
