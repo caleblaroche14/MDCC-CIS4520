@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5530894081b1cab4289058a93c977051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 20
   speedCap: 60
   speedx: 0
   speedy: 0
@@ -251,8 +251,8 @@ MonoBehaviour:
   walk1: {fileID: 21300000, guid: d30b938816bcb414da7fb0af52071d22, type: 3}
   walk2: {fileID: 21300000, guid: f05106afca1707a44aab9a3d4f35eccf, type: 3}
   walk3: {fileID: 21300000, guid: d30b938816bcb414da7fb0af52071d22, type: 3}
-  punch1: {fileID: 21300000, guid: f313056dfe2e1d644b75d1e2db593d5d, type: 3}
-  punch2: {fileID: 21300000, guid: 1514d86da4b80dd4ea20ba7f2c8a6c52, type: 3}
+  punch1: {fileID: 21300000, guid: a303d0e3a111df04cbc67b6813cb5adf, type: 3}
+  punch2: {fileID: 21300000, guid: 270f66b6d3ea2aa42b910434646ce989, type: 3}
   punched: 0
   walking: 0
   punching: 0
