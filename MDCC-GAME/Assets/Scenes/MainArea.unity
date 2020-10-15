@@ -1267,7 +1267,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grunt: {fileID: 8220798032223836127, guid: 23b53d4ec819db944a54b77abece731f, type: 3}
-  gruntCount: 3
+  gCount: 1
+  brawler: {fileID: 8220798032223836127, guid: 830a03600dfaefa4c864519f653e44fc, type: 3}
+  bCount: 1
+  lion: {fileID: 8220798032223836127, guid: c85a733a899065140bbc8be481081a7a, type: 3}
+  lCount: 1
+  swordsman: {fileID: 8220798032223836127, guid: f940ea5ac34055d43bd35cb8c077eea5, type: 3}
+  sCount: 1
   enemies: []
 --- !u!4 &1503169018
 Transform:

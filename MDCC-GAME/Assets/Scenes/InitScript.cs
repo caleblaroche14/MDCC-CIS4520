@@ -6,7 +6,18 @@ public class InitScript : MonoBehaviour
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
     public GameObject grunt;
-    public int gruntCount = 10;
+    public int gCount = 10;
+
+    public GameObject brawler;
+    public int bCount = 10;
+
+    public GameObject lion;
+    public int lCount = 10;
+
+    public GameObject swordsman;
+    public int sCount = 10;
+
+
     System.Random rnd = new System.Random();
     private int lastNumber;
 
@@ -18,14 +29,8 @@ public class InitScript : MonoBehaviour
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
     {
-        for (int i = 0; i < gruntCount; i++)
-        {
-            spawnx = GetRandom(-10, 10);
-            spawny = GetRandom(-10, 10);
-            enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
-
-            Application.targetFrameRate = 60;
-        }
+        Application.targetFrameRate = 60;
+        spawnMobs(gCount,bCount,lCount,sCount);
 
     }
 
@@ -37,5 +42,39 @@ public class InitScript : MonoBehaviour
         lastNumber = rand;
         return rand;
     }
+
+    public void spawnMobs(int gc, int bc, int lc, int sc) //Grunt, Brawler, Lion, Swordsman
+    {
+        
+        for (int i = 0; i < gc; i++)
+        {
+            spawnx = GetRandom(-10, 10);
+            spawny = GetRandom(-10, 10);
+            enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+        }
+
+        for (int i = 0; i < bc; i++)
+        {
+            spawnx = GetRandom(-10, 10);
+            spawny = GetRandom(-10, 10);
+            enemies.Add(Instantiate(brawler, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+        }
+
+        for (int i = 0; i < lc; i++)
+        {
+            spawnx = GetRandom(-10, 10);
+            spawny = GetRandom(-10, 10);
+            enemies.Add(Instantiate(lion, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+        }
+
+        for (int i = 0; i < sc; i++)
+        {
+            spawnx = GetRandom(-10, 10);
+            spawny = GetRandom(-10, 10);
+            enemies.Add(Instantiate(swordsman, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+        }
+
+    }
 }
+
 
