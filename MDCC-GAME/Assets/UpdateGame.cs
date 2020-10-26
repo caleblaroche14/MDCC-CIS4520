@@ -10,10 +10,9 @@ public class UpdateGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject initial = GameObject.Find("init");
-        InitScript intiscript = initial.GetComponent<InitScript>();
-        enemyArray = intiscript.enemies;
-        //public GameObject init;//GameObject.Find("init");
+        //GameObject initial = GameObject.Find("init");
+        //InitScript intiscript = initial.GetComponent<InitScript>();
+        //enemyArray = intiscript.enemies;
     }
 
     // Update is called once per frame

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8220798032223836122, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220798032223836127, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
       propertyPath: m_Name
-      value: Mob
+      value: Lion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
