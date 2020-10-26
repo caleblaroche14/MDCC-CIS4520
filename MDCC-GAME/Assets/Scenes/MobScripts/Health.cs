@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     public void damage(int damage)
     {
         hp -= damage;
+        
     }
 
     public void heal(int heals)

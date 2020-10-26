@@ -5,18 +5,8 @@ using UnityEngine;
 public class InitScript : MonoBehaviour
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
-    public GameObject grunt;
-    public int gCount = 10;
-
-    public GameObject brawler;
-    public int bCount = 10;
-
-    public GameObject lion;
-    public int lCount = 10;
-
-    public GameObject swordsman;
-    public int sCount = 10;
-
+    public GameObject mob;
+    public int gCount = 1;
 
     System.Random rnd = new System.Random();
     private int lastNumber;
@@ -24,14 +14,16 @@ public class InitScript : MonoBehaviour
     int spawnx;
     int spawny;
 
-    public List<GameObject> enemies = new List<GameObject>();
+    public GameObject m; // = GameObject.Find("Mob");
+    //public List<GameObject> enemies; // = new List<GameObject>();
 
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
     {
         Application.targetFrameRate = 60;
-        spawnMobs(gCount,bCount,lCount,sCount);
-
+        //spawnMobs(gCount,bCount,lCount,sCount);
+        m = GameObject.Find("Mob");
+        public List <GameObject> enemies = new List<GameObject>();
     }
 
     int GetRandom(int min, int max)
@@ -50,9 +42,9 @@ public class InitScript : MonoBehaviour
         {
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
-            enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+            //enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
-
+        /*
         for (int i = 0; i < bc; i++)
         {
             spawnx = GetRandom(-10, 10);
@@ -73,6 +65,7 @@ public class InitScript : MonoBehaviour
             spawny = GetRandom(-10, 10);
             enemies.Add(Instantiate(swordsman, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
+        */
 
     }
 }

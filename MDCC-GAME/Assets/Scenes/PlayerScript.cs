@@ -34,9 +34,21 @@ public class PlayerScript : MonoBehaviour
 
     public int count = 0;
 
+    // get enemy array
+    //GameObject Mob = GameObject.Find("Mob");
+    List<GameObject> ea;
+    InitScript ic;
+    Health h;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        GameObject initial = GameObject.Find("init");
+        InitScript intiscript = initial.GetComponent<InitScript>();
+        ea = intiscript.enemies;
+
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         velocity = new Vector2(0f, 0f);
 
@@ -47,7 +59,13 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-         
+        int c = ea.Count;
+        for (int i = 0; i < c; i++)
+        {
+            //Health h = ea[i].GetComponent<Health>();
+            //Debug.Log("Enemy #" + i + " hp: " + ea[i].hp);
+            //ea[i].h.damage();
+        }
         // moving 
         Vector3 pos = transform.position;
         

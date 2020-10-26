@@ -30,9 +30,9 @@ public class MobScript : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
     public int fs = 30;
 
-    public List<GameObject> enemyArray;
-    private bool closeToEnemiesX = false;
-    public bool closeToEnemiesY = false;
+    //public List<GameObject> enemyArray;
+    //private bool closeToEnemiesX = false;
+    //public bool closeToEnemiesY = false;
 
     // animation stuff 
     public Sprite sprite1; // default
@@ -70,9 +70,9 @@ public class MobScript : MonoBehaviour
         ph = p.GetComponent<pHealth>();
 
         // get enemy array
-        GameObject initial = GameObject.Find("init");
-        InitScript intiscript = initial.GetComponent<InitScript>();
-        enemyArray = intiscript.enemies;
+        //GameObject initial = GameObject.Find("init");
+        ///InitScript intiscript = initial.GetComponent<InitScript>();
+        //enemyArray = intiscript.enemies;
 
 
         mySpriteRenderer = GetComponent<SpriteRenderer>();
@@ -268,7 +268,7 @@ public class MobScript : MonoBehaviour
     {
 
         frameCount++;
-        Debug.Log("FrameCount: " + frameCount);
+        //Debug.Log("FrameCount: " + frameCount);
         if (t == "walking")
         {
             //Debug.Log("walking");
