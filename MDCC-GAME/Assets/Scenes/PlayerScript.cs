@@ -31,6 +31,9 @@ public class PlayerScript : MonoBehaviour
 
     private Vector2 velocity;
     private Rigidbody2D rb2D;
+    private CircleCollider2D hitBox;
+    private List<Collider> hitBoxes = new List<Collider>();
+
 
     public int count = 0;
 
@@ -51,6 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         velocity = new Vector2(0f, 0f);
+        hitBox = GetComponent<CircleCollider2D>();
 
     }
 
@@ -62,33 +66,33 @@ public class PlayerScript : MonoBehaviour
         //int c = ea.Count;
         //for (int i = 0; i < c; i++)
         //{
-            //Health h = ea[i].GetComponent<Health>();
-            //Debug.Log("Enemy #" + i + " hp: " + ea[i].hp);
-            //ea[i].h.damage();
+        //Health h = ea[i].GetComponent<Health>();
+        //Debug.Log("Enemy #" + i + " hp: " + ea[i].hp);
+        //ea[i].h.damage();
         //}
         // moving 
         Vector3 pos = transform.position;
-        
+
         if (Input.GetKey("a") || Input.GetKey("d"))
         {
             //if (Math.Abs(speedx) < speedCap)
             //{
-                count++;
-                if (Input.GetKey("a"))
+            count++;
+            if (Input.GetKey("a"))
+            {
+                if (speedx > (speedCap * -1))
                 {
-                    if (speedx > (speedCap * -1))
-                    {
-                        speedx = speedx - accel;
-                    }
+                    speedx = speedx - accel;
                 }
-                if (Input.GetKey("d"))
-                {
+            }
+            if (Input.GetKey("d"))
+            {
                 if (speedx < speedCap)
-                    {
-                        speedx = speedx + accel;
-                    }
+                {
+                    speedx = speedx + accel;
                 }
-                //Debug.Log(count + ": Speed: x" + speedx);
+            }
+            //Debug.Log(count + ": Speed: x" + speedx);
             //}
         }
         else
@@ -114,22 +118,22 @@ public class PlayerScript : MonoBehaviour
         {
             //if (Math.Abs(speedy) < speedCap)
             //{
-                count++;
-                if (Input.GetKey("s"))
+            count++;
+            if (Input.GetKey("s"))
+            {
+                if (speedy > (speedCap * -1))
                 {
-                    if (speedy > (speedCap * -1))
-                    {
-                        speedy = speedy - accel;
-                    }
+                    speedy = speedy - accel;
                 }
-                if (Input.GetKey("w"))
+            }
+            if (Input.GetKey("w"))
+            {
+                if (speedy < speedCap)
                 {
-                    if (speedy < speedCap)
-                    {
-                        speedy = speedy + accel;
-                    }
+                    speedy = speedy + accel;
                 }
-                //Debug.Log(count + ": Speed y: " + speedy);
+            }
+            //Debug.Log(count + ": Speed y: " + speedy);
             //}
         }
         else
@@ -210,6 +214,20 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+        // update list of existing hittable objects
+        public void hitBox.OnTriggerEnter(Collider someCollider)
+        {
+            if (!hitBoxes.Contains(someCollider))
+            {
+                hitBoxes.Add(someCollider);
+            }
+        }
+
+        public void hitBox.OnTriggerExit(Collider someCollider)
+        {
+            hitBoxes.Remove(someCollider);
+        }
+
         //Debug.Log("Speedy: " + speedy);
 
         // move the obj
@@ -218,6 +236,17 @@ public class PlayerScript : MonoBehaviour
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
 
+
+    }
+    // attacking
+    public void Attack()
+    {
+        int count = 0;
+        foreach (Collider hitMe in hitBoxes)
+        {
+            hitMe.gameObject.damage(5);
+            count++;
+        }
 
     }
 }
