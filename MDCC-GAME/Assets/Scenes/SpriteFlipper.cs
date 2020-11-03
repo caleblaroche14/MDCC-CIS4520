@@ -19,6 +19,7 @@ public class SpriteFlipper : MonoBehaviour
     // This function is called by Unity every frame the component is enabled
     private void Update()
     {
+
         // if the A key was pressed this frame
         if (Input.GetKeyDown(KeyCode.A))
         {

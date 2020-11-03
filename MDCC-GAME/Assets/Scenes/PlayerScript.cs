@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb2D;
     private CircleCollider2D hitBox;
-    private List<Collider> hitBoxes = new List<Collider>();
+    private List<Collider2D> hitBoxes = new List<Collider2D>();
 
 
     public int count = 0;
@@ -63,6 +63,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         //int c = ea.Count;
         //for (int i = 0; i < c; i++)
         //{
@@ -214,19 +215,10 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        // update list of existing hittable objects
-        public void hitBox.OnTriggerEnter(Collider someCollider)
-        {
-            if (!hitBoxes.Contains(someCollider))
-            {
-                hitBoxes.Add(someCollider);
-            }
-        }
 
-        public void hitBox.OnTriggerExit(Collider someCollider)
-        {
-            hitBoxes.Remove(someCollider);
-        }
+        // update list of existing hittable objects
+        //hitBox.OnTriggerEnter(hitBoxes);
+        //hitBox.OnTriggerExit(hitBoxes);
 
         //Debug.Log("Speedy: " + speedy);
 
@@ -235,18 +227,36 @@ public class PlayerScript : MonoBehaviour
         velocity = new Vector2(speedx, speedy);
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
-
-
+        
     }
+    
+    private void OnTriggerEnter2D(Collider2D someCollider)
+    {
+        Debug.Log("Entered Hitbox");
+        if (!hitBoxes.Contains(someCollider))
+        {
+            hitBoxes.Add(someCollider);
+            
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D someCollider)
+    {
+        hitBoxes.Remove(someCollider);
+        Debug.Log("Exited Hitbox");
+    }
+    
+
     // attacking
     public void Attack()
     {
         int count = 0;
-        foreach (Collider hitMe in hitBoxes)
+        foreach (Collider2D hitMe in hitBoxes)
         {
-            hitMe.gameObject.damage(5);
+            //hitMe.gameObject.damage(5);
             count++;
         }
 
     }
 }
+

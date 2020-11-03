@@ -66,7 +66,7 @@ public class RenderChar : MonoBehaviour
             }
             else if (punchCount == 10)
             {
-                PlayerScript.Attack();
+                //PlayerScript.Attack();
                 punchCount = 0;
                 punching = false;
             }
