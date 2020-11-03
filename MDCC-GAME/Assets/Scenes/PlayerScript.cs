@@ -32,10 +32,15 @@ public class PlayerScript : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb2D;
     private CircleCollider2D hitBox;
-    private List<Collider2D> hitBoxes = new List<Collider2D>();
+    // private List<Collider2D> hitBoxes = new List<Collider2D>();
 
 
     public int count = 0;
+
+    // collider stuff
+    public int colliderCount;
+    public Collider2D[] hitBoxes = new Collider2D[1];
+
 
     // get enemy array
     //GameObject Mob = GameObject.Find("Mob");
@@ -227,10 +232,12 @@ public class PlayerScript : MonoBehaviour
         velocity = new Vector2(speedx, speedy);
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
-        
+
+
+        int colliderCount = hitBox.OverlapCollider(ContactFilter2D.NoFilter, hitBoxes);
     }
     
-    private void OnTriggerEnter2D(Collider2D someCollider)
+    /*private void OnTriggerEnter2D(Collider2D someCollider)
     {
         Debug.Log("Entered Hitbox");
         if (!hitBoxes.Contains(someCollider))
@@ -244,7 +251,7 @@ public class PlayerScript : MonoBehaviour
     {
         hitBoxes.Remove(someCollider);
         Debug.Log("Exited Hitbox");
-    }
+    } */
     
 
     // attacking
