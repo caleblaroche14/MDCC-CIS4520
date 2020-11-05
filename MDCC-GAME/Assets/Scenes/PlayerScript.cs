@@ -233,8 +233,11 @@ public class PlayerScript : MonoBehaviour
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
 
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.NoFilter();
 
-        int colliderCount = hitBox.OverlapCollider(ContactFilter2D.NoFilter, hitBoxes);
+        int colliderCount = hitBox.OverlapCollider(contactFilter, hitBoxes);
+        Debug.Log("Collider Count: " + colliderCount);
     }
     
     /*private void OnTriggerEnter2D(Collider2D someCollider)
