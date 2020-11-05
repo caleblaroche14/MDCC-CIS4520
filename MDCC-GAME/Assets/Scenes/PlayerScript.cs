@@ -34,6 +34,9 @@ public class PlayerScript : MonoBehaviour
     private CircleCollider2D hitBox;
     // private List<Collider2D> hitBoxes = new List<Collider2D>();
 
+    // attack range
+    public float range = 10;
+    public int damage = 20;
 
     public int count = 0;
 
@@ -43,19 +46,30 @@ public class PlayerScript : MonoBehaviour
 
 
     // get enemy array
-    //GameObject Mob = GameObject.Find("Mob");
+
     List<GameObject> ea;
     InitScript ic;
     Health h;
 
 
+
+    // ATTACK VARIABLES ----------------------------------
+    public List<GameObject> enemyArray;// = new List<GameObject>;
+    GameObject e;
+    Health eh;
+    Vector3 enemyPos;
+    //----------------------------------------------------
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //GameObject mobObj = GameObject.Find("Mob");
+        //List<mobObj> mobList;
 
         GameObject initial = GameObject.Find("init");
         InitScript intiscript = initial.GetComponent<InitScript>();
-        //ea = intiscript.enemies;
+        enemyArray = intiscript.enemies;
 
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         velocity = new Vector2(0f, 0f);
@@ -233,13 +247,52 @@ public class PlayerScript : MonoBehaviour
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;
 
+        // ATTACK CODE --------------------------------------------------------
+
+        GameObject mobObj = GameObject.Find("Mob");
+        for (int i = 0; i < enemyArray.Count; i++)
+        {
+
+            e = enemyArray[i];
+
+            if (enemyArray[i] != null)
+            {
+                eh = e.GetComponent<Health>();
+
+                //playerPos = p.transform.position;
+                enemyPos = e.transform.position;
+                float distance = Vector3.Distance(pos, enemyPos);
+
+                //Debug.Log("player to enemy: " + distance);
+                if (Input.GetKeyDown("p"))
+                {
+
+                    if (distance < range)
+                    {
+                        eh.damage(damage);
+                        //Debug.Log("in range");
+                    }
+                    else
+                    {
+                        //Debug.Log("Too far away to hit");
+                    }
+                }
+            }
+
+
+            Debug.Log(eh.hp);
+        }
+
+        // --------------------------------------------------------------------
+        /*
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.NoFilter();
 
         int colliderCount = hitBox.OverlapCollider(contactFilter, hitBoxes);
-        Debug.Log("Collider Count: " + colliderCount);
+        //Debug.Log("Collider Count: " + colliderCount);
+        */
     }
-    
+
     /*private void OnTriggerEnter2D(Collider2D someCollider)
     {
         Debug.Log("Entered Hitbox");
@@ -255,7 +308,7 @@ public class PlayerScript : MonoBehaviour
         hitBoxes.Remove(someCollider);
         Debug.Log("Exited Hitbox");
     } */
-    
+
 
     // attacking
     public void Attack()

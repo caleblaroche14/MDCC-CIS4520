@@ -69,6 +69,7 @@ public class MobScript : MonoBehaviour
         p = GameObject.FindWithTag("Player");
         ph = p.GetComponent<pHealth>();
 
+
         // get enemy array
         //GameObject initial = GameObject.Find("init");
         ///InitScript intiscript = initial.GetComponent<InitScript>();
@@ -91,6 +92,8 @@ public class MobScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         // animate
         if (walking == true)
         {

@@ -1205,9 +1205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mob: {fileID: 8220798032223836127, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
   grunt: {fileID: 3892891424401301253, guid: c3f0323a1ab8837458867cd0a0bb0d11, type: 3}
-  gCount: 1
+  gCount: 10
   lion: {fileID: 3997708787811441611, guid: 42363a38b8a7b9f4183e6d176c889755, type: 3}
-  lCount: 0
+  lCount: 5
   enemies: []
 --- !u!4 &1503169018
 Transform:
@@ -1744,6 +1744,10 @@ PrefabInstance:
     - target: {fileID: 842967961461212726, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694507105641387601, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2694507105641387602, guid: 0e6747f7cb00aae49947fee8465465eb, type: 3}
       propertyPath: m_IsTrigger
