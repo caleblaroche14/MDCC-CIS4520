@@ -14,6 +14,12 @@ public class InitScript : MonoBehaviour
     public GameObject lion;
     public int lCount = 1;
 
+    public GameObject brawler;
+    public int bCount = 1;
+
+    public GameObject swordsman;
+    public int sCount = 1;
+
     System.Random rnd = new System.Random();
     private int lastNumber;
 
@@ -26,7 +32,7 @@ public class InitScript : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        spawnMobs(gCount,lCount);
+        spawnMobs(gCount,lCount,bCount, sCount);
         //m = GameObject.Find("Mob");
         //public List <GameObject> enemies = new List<GameObject>();
     }
@@ -40,7 +46,7 @@ public class InitScript : MonoBehaviour
         return rand;
     }
 
-    public void spawnMobs(int gc, int lc) //Grunt, Brawler, Lion, Swordsman
+    public void spawnMobs(int gc, int lc,int bc, int sc) //Grunt, Brawler, Lion, Swordsman
     {
         
         for (int i = 0; i < gc; i++)
@@ -56,21 +62,21 @@ public class InitScript : MonoBehaviour
             spawny = GetRandom(-10, 10);
             enemies.Add(Instantiate(lion, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
-        /*
-        for (int i = 0; i < lc; i++)
+        
+        for (int i = 0; i < bc; i++)
         {
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
-            enemies.Add(Instantiate(lion, new Vector3(spawnx, spawny, 0), Quaternion.identity));
+            enemies.Add(Instantiate(brawler, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
-
+        
         for (int i = 0; i < sc; i++)
         {
             spawnx = GetRandom(-10, 10);
             spawny = GetRandom(-10, 10);
             enemies.Add(Instantiate(swordsman, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
-        */
+        
         
     }
 

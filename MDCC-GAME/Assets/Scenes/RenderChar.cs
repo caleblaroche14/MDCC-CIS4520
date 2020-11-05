@@ -52,24 +52,17 @@ public class RenderChar : MonoBehaviour
         if (Input.GetKey("p")) {
             punching = true;
         }
-
-        while (punching == true)
+        else
         {
-            punchCount++;
-            if (punchCount == 0)
-            {
-                spriteRenderer.sprite = punch1;
-            }
-            else if (punchCount == 5)
-            {
-                spriteRenderer.sprite = punch2;
-            }
-            else if (punchCount == 10)
-            {
-                //PlayerScript.Attack();
-                punchCount = 0;
-                punching = false;
-            }
+            punching = false;
+            spriteRenderer.sprite = walk1;
+        }
+
+        if (punching == true)
+        {
+
+            spriteRenderer.sprite = punch2;
+
         }
     
 

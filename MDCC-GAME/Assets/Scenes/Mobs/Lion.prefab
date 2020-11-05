@@ -57,6 +57,38 @@ PrefabInstance:
       propertyPath: punch2
       value: 
       objectReference: {fileID: 21300000, guid: 270f66b6d3ea2aa42b910434646ce989, type: 3}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: buffer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: accelStart
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: speedCap
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: maxSpeedPercent
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: minSpeedPercent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: fs
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8220798032223836122, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

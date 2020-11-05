@@ -110,6 +110,10 @@ PrefabInstance:
       propertyPath: fs
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8113132577259571752, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8220798032223836122, guid: c1033b9e63f4cdb479e28c03d9f17c15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
