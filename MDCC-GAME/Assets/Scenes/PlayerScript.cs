@@ -11,9 +11,9 @@ public class PlayerScript : MonoBehaviour
 
     public float scaleSpeed = 3f;
 
-    public int jumpTime = 50;
-    public int jumpSpeed = 1;
-    public int jumpCount = 0;
+    //public int jumpTime = 50;
+    //public int jumpSpeed = 1;
+    //public int jumpCount = 0;
 
     public bool onGround = true;
 
@@ -176,9 +176,10 @@ public class PlayerScript : MonoBehaviour
         }
 
         // jumping 
-        Vector3 scale = transform.localScale;
+        //Vector3 scale = transform.localScale;
 
         // checking to see if jumpCount is 0, if so the obj is on ground
+        /*
         if (jumpCount > 0)
         {
             onGround = false;
@@ -187,10 +188,11 @@ public class PlayerScript : MonoBehaviour
         {
             onGround = true;
         }
-
+        */
 
 
         // checking if key is down or not
+        /*
         if (Input.GetKeyDown("space"))
         {
             if (jumpCount == 0)
@@ -203,7 +205,8 @@ public class PlayerScript : MonoBehaviour
         {
 
         }
-
+        */
+        /*
         // if jumping up
         if (jU == true)
         {
@@ -233,7 +236,7 @@ public class PlayerScript : MonoBehaviour
                 speedy -= upSpeed * Time.deltaTime;
             }
         }
-
+        */
 
         // update list of existing hittable objects
         //hitBox.OnTriggerEnter(hitBoxes);
@@ -242,7 +245,7 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log("Speedy: " + speedy);
 
         // move the obj
-        transform.localScale = scale;
+        //transform.localScale = scale;
         velocity = new Vector2(speedx, speedy);
         rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
         transform.position = pos;

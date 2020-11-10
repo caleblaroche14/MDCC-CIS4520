@@ -55,7 +55,8 @@ public class RenderChar : MonoBehaviour
         else
         {
             punching = false;
-            spriteRenderer.sprite = walk1;
+            //walking = true;
+            //spriteRenderer.sprite = walk1;
         }
 
         if (punching == true)
@@ -64,25 +65,35 @@ public class RenderChar : MonoBehaviour
             spriteRenderer.sprite = punch2;
 
         }
+
+        if (punching == false && walking == false)
+        {
+            spriteRenderer.sprite = walk1;
+        }
     
 
         if (walking == true)
         {
+            
             walkCount++;
             if (walkCount == 1)
             {
+                Debug.Log("frame 1" );
                 spriteRenderer.sprite = walk1;
             }
             else if (walkCount == 50)
             {
+                Debug.Log("frame 2");
                 spriteRenderer.sprite = walk2;
             }
             else if (walkCount == 100)
             {
+                Debug.Log("frame 3");
                 spriteRenderer.sprite = walk3;
                 
             }else if(walkCount == 150)
             {
+                Debug.Log("frame reset");
                 walkCount = 0;
             }
 
