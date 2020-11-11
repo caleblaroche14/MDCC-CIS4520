@@ -13,6 +13,8 @@ public class UpdateGame : MonoBehaviour
     Vector3 playerPos;
     Vector3 enemyPos;
 
+    public int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class UpdateGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        score++;
         /*
         GameObject mobObj = GameObject.Find("Mob");
         for (int i = 0; i < enemyArray.Count; i++)

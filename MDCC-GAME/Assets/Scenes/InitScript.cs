@@ -28,13 +28,24 @@ public class InitScript : MonoBehaviour
 
     public List<GameObject> enemies; // = new List<GameObject>();
 
+    // get game score
+    GameObject updater;// = GameObject.Find("update");
+    UpdateGame ug;
+    public int s = 1;
+    public int spawnMult = 500;
+    public int oldScore;// = s + spawnMult;
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
     {
         Application.targetFrameRate = 60;
-        spawnMobs(gCount,lCount,bCount, sCount);
+        //spawnMobs(gCount,lCount,bCount, sCount);
         //m = GameObject.Find("Mob");
         //public List <GameObject> enemies = new List<GameObject>();
+        updater = GameObject.Find("update");
+        ug = updater.GetComponent<UpdateGame>();
+        oldScore = s + spawnMult; 
+        //oldScore = (s + spawnMult);
+
     }
 
     int GetRandom(int min, int max)
@@ -78,6 +89,17 @@ public class InitScript : MonoBehaviour
         }
         
         
+    }
+    void FixedUpdate()
+    {
+        s++;
+        //Debug.Log("old score:" + oldScore);
+        if (s == (oldScore + spawnMult))
+        {
+            oldScore = (s + spawnMult);
+            //Debug.Log("spawn");
+            spawnMobs(1, 1, 1, 1);
+        }
     }
 
     
