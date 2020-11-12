@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArray: []
+  st: {fileID: 724284084}
   score: 0
 --- !u!4 &445105382
 Transform:
@@ -623,14 +624,14 @@ RectTransform:
   m_GameObject: {fileID: 724284082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1872958390}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -479.49, y: -203.04}
+  m_AnchoredPosition: {x: -50, y: 79}
   m_SizeDelta: {x: 178.41809, y: 43.91278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724284084

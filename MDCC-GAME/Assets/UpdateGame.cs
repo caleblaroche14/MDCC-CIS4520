@@ -16,13 +16,7 @@ public class UpdateGame : MonoBehaviour
     Health eh;
     pHealth ph;
 
-    GameObject ourUI;
-    TextMeshPro scoreText;
-
-
-
-
-
+    public TextMeshProUGUI st;
 
     Vector3 playerPos;
     Vector3 enemyPos;
@@ -36,11 +30,9 @@ public class UpdateGame : MonoBehaviour
         InitScript intiscript = initial.GetComponent<InitScript>();
         enemyArray = intiscript.enemies;
 
-        ourUI = GameObject.Find("playerUI");
-        scoreText = ourUI.GetComponent<TextMeshPro>();
-
-
-
+        //ourUI = GameObject.Find("playerUI");
+        //scoreText = ourUI.GetComponent<TextMeshProUGUI>();
+        //st = ourUI.GetComponent<TextMeshPro>();
 
         p = GameObject.Find("player");
         ph = p.GetComponent<pHealth>();
@@ -49,13 +41,13 @@ public class UpdateGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        score++;
         if (ph.getHealth() <= 0)
         {
             SceneManager.LoadScene("MainMenu");
         }
 
-
-        scoreText.SetText("Score:" + score);
+        st.text = ("Score: " + score);
         
     }
 }
