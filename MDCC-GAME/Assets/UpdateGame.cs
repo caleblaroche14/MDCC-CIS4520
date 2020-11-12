@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class UpdateGame : MonoBehaviour
 {
@@ -9,6 +14,15 @@ public class UpdateGame : MonoBehaviour
     GameObject p;
     GameObject e;
     Health eh;
+    pHealth ph;
+
+    GameObject ourUI;
+    TextMeshPro scoreText;
+
+
+
+
+
 
     Vector3 playerPos;
     Vector3 enemyPos;
@@ -22,38 +36,26 @@ public class UpdateGame : MonoBehaviour
         InitScript intiscript = initial.GetComponent<InitScript>();
         enemyArray = intiscript.enemies;
 
-        p = GameObject.FindWithTag("Player");
+        ourUI = GameObject.Find("playerUI");
+        scoreText = ourUI.GetComponent<TextMeshPro>();
+
+
+
+
+        p = GameObject.Find("player");
+        ph = p.GetComponent<pHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        score++;
-        /*
-        GameObject mobObj = GameObject.Find("Mob");
-        for (int i = 0; i < enemyArray.Count; i++)
+        if (ph.getHealth() <= 0)
         {
-
-            e = enemyArray[i];
-            eh = e.GetComponent<Health>();
-
-            playerPos = p.transform.position;
-            enemyPos = e.transform.position;
-            float distance = Vector3.Distance(playerPos, enemyPos);
-
-
-            if (Input.GetKey("p"))
-            {
-                //if (distance < p.range)
-                //{
-                    eh.damage(10);
-                //}
-            }
-            
-
-            Debug.Log(eh.hp);
-            
+            SceneManager.LoadScene("MainMenu");
         }
-        */
+
+
+        scoreText.SetText("Score:" + score);
+        
     }
 }
