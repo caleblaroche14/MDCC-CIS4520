@@ -41,13 +41,17 @@ public class UpdateGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score++;
         if (ph.getHealth() <= 0)
         {
             SceneManager.LoadScene("MainMenu");
         }
 
-        st.text = ("Score: " + score);
-        
+        st.text = ("Score: " + score); 
     }
+
+    public void EnemyDefeated()
+    {
+        score++;
+    }
+
 }
