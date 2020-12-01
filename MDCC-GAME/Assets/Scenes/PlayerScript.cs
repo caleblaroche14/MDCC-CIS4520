@@ -57,6 +57,7 @@ public class PlayerScript : MonoBehaviour
     public List<GameObject> enemyArray;// = new List<GameObject>;
     GameObject e;
     Health eh;
+    MobScript ms;
     Vector3 enemyPos;
     //----------------------------------------------------
 
@@ -261,7 +262,7 @@ public class PlayerScript : MonoBehaviour
             if (enemyArray[i] != null)
             {
                 eh = e.GetComponent<Health>();
-
+                ms = e.GetComponent<MobScript>();
                 //playerPos = p.transform.position;
                 enemyPos = e.transform.position;
                 float distance = Vector3.Distance(pos, enemyPos);
@@ -273,6 +274,19 @@ public class PlayerScript : MonoBehaviour
                     if (distance < range)
                     {
                         eh.damage(damage);
+
+                        
+                        ms.isPunched = true;
+                        ms.pc = 500;
+
+                        if (pos.x < enemyPos.x)
+                        {
+                            ms.punchLaunch = 500;
+                        }
+                        else
+                        {
+                            ms.punchLaunch = -500;
+                        }
                         //Debug.Log("in range");
                     }
                     else

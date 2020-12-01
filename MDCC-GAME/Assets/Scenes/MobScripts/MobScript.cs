@@ -30,6 +30,10 @@ public class MobScript : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
     public int fs = 30;
 
+    public bool isPunched;
+    public int pc = 0;
+    public int punchLaunch = 500;
+
     //public List<GameObject> enemyArray;
     //private bool closeToEnemiesX = false;
     //public bool closeToEnemiesY = false;
@@ -93,6 +97,15 @@ public class MobScript : MonoBehaviour
     void FixedUpdate()
     {
 
+        if (isPunched == true && pc > 0)
+        {
+            pc -= pc;
+        }
+        else
+        {
+            isPunched = false;
+            pc = 0;
+        }
 
         // animate
         if (walking == true)
@@ -234,16 +247,22 @@ public class MobScript : MonoBehaviour
             {
                 ph.damagePlayer(damage);
                 coolDown = 0;
-
                 // set punch back so it only damages player on one frame;
                 punched = false;
             }
         }
         //Debug.Log("Mob cooldown: " + coolDown);
-
+        //isPunched = true;
         // adjust pos
-        pos.y += speedy * Time.deltaTime;
-        pos.x += speedx * Time.deltaTime;
+        if (isPunched == false)
+        {
+            pos.x += speedx * Time.deltaTime;
+            pos.y += speedy * Time.deltaTime;
+        }
+        else
+        {
+            pos.x += punchLaunch * Time.deltaTime;
+        }
  
         // move mob
         transform.position = pos;

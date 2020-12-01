@@ -62,29 +62,29 @@ public class InitScript : MonoBehaviour
         
         for (int i = 0; i < gc; i++)
         {
-            spawnx = GetRandom(-10, 10);
-            spawny = GetRandom(-10, 10);
+            spawnx = GetRandom(-140, 140);
+            spawny = GetRandom(-60, 60);
             enemies.Add(Instantiate(grunt, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
         
         for (int i = 0; i < lc; i++)
         {
-            spawnx = GetRandom(-10, 10);
-            spawny = GetRandom(-10, 10);
+            spawnx = GetRandom(-140, 140);
+            spawny = GetRandom(-60, 60);
             enemies.Add(Instantiate(lion, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
         
         for (int i = 0; i < bc; i++)
         {
-            spawnx = GetRandom(-10, 10);
-            spawny = GetRandom(-10, 10);
+            spawnx = GetRandom(-140, 140);
+            spawny = GetRandom(-60, 60);
             enemies.Add(Instantiate(brawler, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
         
         for (int i = 0; i < sc; i++)
         {
-            spawnx = GetRandom(-10, 10);
-            spawny = GetRandom(-10, 10);
+            spawnx = GetRandom(-140, 140);
+            spawny = GetRandom(-60, 60);
             enemies.Add(Instantiate(swordsman, new Vector3(spawnx, spawny, 0), Quaternion.identity));
         }
         
